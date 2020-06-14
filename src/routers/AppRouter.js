@@ -5,13 +5,13 @@ import HomePage from '../components/HomePage';
 import ContactPage from '../components/ContactPage';
 import PortfolioPage from '../components/PortfolioPage';
 import NotFoundPage from '../components/NotFoundPage';
-import Header from '../components/Header';
+import Header from '../components/header/Header';
 import ProjectsPage from '../components/ProjectsPage';
 
 
 const AppRouter = () => (
     <BrowserRouter>
-        <div>
+        <div style={{ height:"1500px", background: 'red'}}>
             <Header />
             <Switch>
             <Route path="/" component={HomePage} exact={true}/>

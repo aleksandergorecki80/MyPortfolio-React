@@ -1,6 +1,6 @@
 * {
     box-sizing: border-box;
-    border: 1px solid red;
+    // border: 1px solid red;
 }
 
 html {
@@ -13,5 +13,10 @@ body {
 }
 
 .is-avtive {
-    font-weight: bold;
+    color: white !important;
+    background-color: $main-red;
+    cursor: default;
+    &:hover {
+        background-color: $main-red !important;
+    }
 }
