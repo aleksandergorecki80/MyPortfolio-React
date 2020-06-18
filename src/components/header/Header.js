@@ -1,73 +1,92 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, BrowserRouter } from 'react-router-dom';
 
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import MenuIcon from '@material-ui/icons/Menu';
-import IconButton from '@material-ui/core/IconButton';
-
-import SiteDrawer from './SiteDrawer';
+import SideDrawer from './SideDrawer/SideDrawer';
+import DrawerToggleButton from './SideDrawer/DrawerToggleButton';
+import Backdrop from './backdrop/Backdrop';
 
 import AGLogo from '../../images/logo-ag-imp.svg';
 
 class Header extends React.Component {
     state = {
         drawerOpen: false,
-        headerShow: true
+        headerNavigationSmall: false,
+        mediumDevice: false
+    }
+    toggleDrawerHandler = () => {
+        this.setState((prevState) => {
+            return {
+                drawerOpen: !prevState.drawerOpen
+            }
+        })
+    };
+
+    backdropClickHandler = () => {
+        this.setState({ drawerOpen: false });
     }
 
-    componentDidMount(){
+    componentDidMount() {
         window.addEventListener('scroll', this.handleScroll);
+        window.addEventListener('resize', this.handleResize);
     }
 
     handleScroll = () => {
-        if(window.scrollY > 0 ){
+        if (window.scrollY > 0) {
             this.setState({
-                headerShow: false
+                headerNavigationSmall: true
             });
         } else {
             this.setState({
-                headerShow: true
+                headerNavigationSmall: false
             });
         }
     }
 
-    toggleDrawer = (value) => {
-        this.setState({
-            drawerOpen: value
-        })
+    handleResize = () => {
+        if (window.innerWidth < 768) {
+            this.setState({
+                mediumDevice: true
+            });
+            console.log(this.state.mediumDevice);
+        } else {
+            this.setState({
+                mediumDevice: false
+            });
+            console.log(this.state.mediumDevice)
+        }
     }
 
+
+
     render() {
+        let backdrop;
+        if(this.state.drawerOpen) {
+            backdrop = <Backdrop click={this.backdropClickHandler} />;
+        }
+
+        let headerNavigationItemsClasses = "header__navigation--items";
+        let logoClasses = "logo";
+        let headerNavigationClasses = "header__navigation";
+        this.state.headerNavigationSmall &&  (headerNavigationClasses = "header__navigation small " );
+        this.state.headerNavigationSmall &&  (headerNavigationItemsClasses = "header__navigation--items small " );
+        this.state.headerNavigationSmall &&  (logoClasses = "logo small" );
+
         return (
             <header>
-                <AppBar
-                    position="fixed"
-                >
-                    <Toolbar 
-                        className={this.state.headerShow ? "header__app-bar" : "header__app-bar-small"} 
-                    >
-                        <div><img src={AGLogo} alt="Logo" /></div>
-                        <div className="header__nav-group">
+                <nav className={ headerNavigationClasses } >
+                    <div><img src={AGLogo} alt="Logo" className={ logoClasses }/></div>
+                    <div className="spacer" />
+                    <div className={ headerNavigationItemsClasses }>
+                        <BrowserRouter>
                             <NavLink to="/" activeClassName="is-avtive" className="header__nav-link" exact={true}>Home</NavLink>
                             <NavLink to="/portfolio" activeClassName="is-avtive" className="header__nav-link">Portfolio</NavLink>
                             <NavLink to="/contact" activeClassName="is-avtive" className="header__nav-link">Contact</NavLink>
-                            <IconButton
-                                aria-label="Menu"
-                                onClick={() => this.toggleDrawer(true)}
-                            >
-                                <MenuIcon
-                                    style={{ fontSize: 25 }}
-                                    className="header__menu-icon"
-                                />
-                            </IconButton>
-                        </div>
-                        <SiteDrawer
-                            open={this.state.drawerOpen}
-                            onClose={this.toggleDrawer}
-                        />
-                    </Toolbar>
-                </AppBar>
+                        </BrowserRouter>
+                    </div>
+                    <div><DrawerToggleButton drawerClickHandler={this.toggleDrawerHandler} /></div>
+                    <SideDrawer show={this.state.drawerOpen}/>
+                    { backdrop }
+                </nav>
             </header>
         );
     };

@@ -1,0 +1,50 @@
+// .MuiDrawer-paper {
+//     background-color: $off-black !important;
+// }
+// .MuiListItem-root {
+//     color: $main-grey !important;
+//     padding-top: 2rem !important;
+//     padding-bottom: 2rem !important;
+// }
+
+.side-drawer {
+    height: 100%;
+    background-color: $off-black;
+    box-shadow: 2px 0px 5px rgba(0,0,0,0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 70%;
+    max-width: 700px;
+    z-index: 200;
+    ul {
+        height: 100%;
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        li {
+            margin: 0.5rem;
+            padding: 2rem;
+        }
+        a {
+            font-size: 2rem;
+            text-decoration: none;
+            color: $main-grey;
+            margin: 0.5rem;
+            padding: 2rem;
+            &:hover {
+                background-color: $main-green;
+            } 
+            &:active {
+                background-color: $main-red;
+            }
+        }
+    }
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-out;
+}
+
+.side-drawer.open {
+    transform: translateX(0);
+}
