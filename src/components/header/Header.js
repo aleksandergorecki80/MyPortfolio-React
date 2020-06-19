@@ -79,6 +79,7 @@ class Header extends React.Component {
                     <div className={ headerNavigationItemsClasses }>
                         <BrowserRouter>
                             <NavLink to="/" activeClassName="is-avtive" className="header__nav-link" exact={true}>Home</NavLink>
+                            <NavLink to="/about-me" activeClassName="is-avtive" className="header__nav-link">About me</NavLink>
                             <NavLink to="/portfolio" activeClassName="is-avtive" className="header__nav-link">Portfolio</NavLink>
                             <NavLink to="/contact" activeClassName="is-avtive" className="header__nav-link">Contact</NavLink>
                         </BrowserRouter>

@@ -13,7 +13,9 @@ class AboutMeList extends Component {
             )
         })
         return (
-            <section className="about-me">
+            <section className="container about-me">
+                    <h2>ABOUT ME</h2>
+                    <hr className="hr--separator"/>
                 {dataReturn}
             </section>
         );

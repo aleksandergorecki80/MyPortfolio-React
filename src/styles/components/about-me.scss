@@ -1,11 +1,10 @@
-.about-me {
-    padding: 20px;
+.about-me__content {
     hr {
         border: 1px solid $main-red;
         margin: 0;
     }
 }
-.about-me>p {
+.about-me p {
     font-size: 1.7rem;
     text-align: justify;
     line-height: 2.5rem;

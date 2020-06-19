@@ -1,0 +1,12 @@
+[
+    {
+        "title": "Blogjustyny",
+        "subtitle": "Web page with recipes",
+        "img": "/images/blog-justyny.jpg",
+        "technologies": [ "Laravel", "VUE.js", "PHP", "JavaScript", "SCSS" ],
+        "button1": "blogjustyny.pl",
+        "button1-url": "https://blogjustyny.pl/",
+        "button2": "See on Github",
+        "button2-url": "https://github.com/aleksandergorecki80/cakes"
+    }
+]
