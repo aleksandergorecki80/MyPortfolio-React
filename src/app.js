@@ -5,44 +5,32 @@ import ReactDOM from 'react-dom';
 import Header from './components/header/Header';
 import Jumbotron from './components/jumbotron/Jumbotron';
 
-import aboutMeContent from './components/content/about-me';
+import aboutMeContent from './components/AboutMe/about_me-content';
 import AboutMeList from './components/AboutMe/AboutMeList';
 
+import PortfolioContent from './components/portfolio/portfolio-content';
 import PortfolioList from './components/portfolio/PortfolioList';
+
+import ContactMe from './components/contact/ContactMe';
 
 import 'normalize.css/normalize.css';
 import './styles/styles.scss';
 
-import Content from './components/portfolio/portfolio-content';
+
 
 
 class App extends Component {
-
-//     state = {
-//         url: ''
-//     }
-
-// componentDidMount(){
-//     const content = Content;
-//     this.setState({
-//         url: content[0].img
-//     })
-// }
-
     render() {
         const newData = aboutMeContent;
-        const content = Content;
-
-        // console.log(this.state.url);
-        console.log(content);
-        
+        const portfolioContent = PortfolioContent;
+       
         return (
-            <div style={{ height: '100%' }}>
+            <div>
                 <Header />
                 <Jumbotron />
                 <AboutMeList data={newData}/>
-                <PortfolioList />
-                <img src={ content[0].img } />
+                <PortfolioList portfolioContent={portfolioContent}/>
+                <ContactMe />
             </div>
         );
     }

@@ -1,16 +1,44 @@
 import React, { Component } from 'react';
 import PortfolioPage from './PortfolioPage';
 
-class PortfolioList extends Component {
-    render() {
-     return (
-         <section className="container">
-                    <h2>MY PROJECTS</h2>
-                    <hr className="hr--separator"/>
-             <PortfolioPage />
-         </section>
-     )   
-    }
+
+const PortfolioList = (props) => {
+    const projectsList = props.portfolioContent.map((project, key)=>{
+        return(
+            <PortfolioPage 
+            key={key}
+            title={project.title}
+            subtitle={project.subtitle}
+            img={project.img}
+            technologies={project.technologies}
+            wwwButtonName={project.wwwButtonName}
+            wwwButtonUrl={project.wwwButtonUrl}
+            githubButtonName={project.githubButtonName}
+            githubButtonUrl={project.githubButtonUrl}
+        />
+        )
+
+    });
+
+    return (
+        <section className="container">
+            <h2>MY PROJECTS</h2>
+            <hr className="hr--sections-separator" />
+            {projectsList}
+        </section>
+    )
 }
+
+// class PortfolioList extends Component {
+//     render() {
+//      return (
+//          <section className="container">
+//                     <h2>MY PROJECTS</h2>
+//                     <hr className="hr--separator"/>
+//              <PortfolioPage />
+//          </section>
+//      )   
+//     }
+// }
 
 export default PortfolioList;
