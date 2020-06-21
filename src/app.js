@@ -21,6 +21,9 @@ import './styles/styles.scss';
 
 class App extends Component {
     render() {
+
+  
+
         const newData = aboutMeContent;
         const portfolioContent = PortfolioContent;
        

@@ -21,24 +21,12 @@ const PortfolioList = (props) => {
     });
 
     return (
-        <section className="container">
+        <section className="container portfolio">
             <h2>MY PROJECTS</h2>
             <hr className="hr--sections-separator" />
             {projectsList}
         </section>
     )
 }
-
-// class PortfolioList extends Component {
-//     render() {
-//      return (
-//          <section className="container">
-//                     <h2>MY PROJECTS</h2>
-//                     <hr className="hr--separator"/>
-//              <PortfolioPage />
-//          </section>
-//      )   
-//     }
-// }
 
 export default PortfolioList;
