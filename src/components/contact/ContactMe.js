@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { faGithubSquare, faLinkedin, faSkype } from "@fortawesome/free-brands-svg-icons";
 
+import ContactForm from './ContactForm';
  
 
 class ContactMe extends Component {
@@ -32,7 +33,9 @@ class ContactMe extends Component {
                             </a>
                         </div>
                     </div>
-                    <div className="col-8 col-s-12 contact-data">form</div>
+                    <div className="col-8 col-s-12 contact-data">
+                        <ContactForm />
+                    </div>
                 </div>
             </section>
         );

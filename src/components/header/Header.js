@@ -47,12 +47,10 @@ class Header extends React.Component {
             this.setState({
                 mediumDevice: true
             });
-            console.log(this.state.mediumDevice);
         } else {
             this.setState({
                 mediumDevice: false
             });
-            console.log(this.state.mediumDevice)
         }
     }
 
