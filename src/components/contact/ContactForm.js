@@ -5,9 +5,7 @@ class ContactForm extends React.Component {
 
     state = {
             errors: [],
-            lengthDoesntMatch: [],
-            fieldIsEmpty: [],
-            wrongCharacters: [],
+
         // nameFieldLengthValid: true,
         // nameFieldCharactersValid: true,
         
@@ -20,20 +18,35 @@ class ContactForm extends React.Component {
         
         
         if (this.checkIfEmpty(e.target.value)) {
+            if(this.findInArray('Is empty', name)) return; // Do nothing
+            // Add error to the array
             const errorToAdd = {message: 'Is empty', name: name}
             this.addError(errorToAdd);
+        } else {
+            console.log('tutaj')
+            console.log(name)
+                
+            // Remove an error
+            const newArr = this.state.errors.filter((element)=>{
+                return element.message !== 'Is empty' && element.name !== name;
+            })
+            this.setState({
+                     errors: newArr
+                }
+            )
         }
 
-        if (!this.checkIfLengthMatches(e.target.value, 3)){
-            const errorToAdd = {message: 'Too short', name: name};
-            this.addError(errorToAdd);
-        }
+        // if (this.checkIfLengthMatches(e.target.value, 3)){
+        //     const errorToAdd = {message: 'Too short', name: name};
+        //     this.addError(errorToAdd);
+        // }
 
-        const lengthMatches = this.checkIfLengthMatches(e.target.value, 3);
-        console.log('lengthMatches', lengthMatches, name);
+        // if(this.checkIfLettersAndDigits(e.target.value)) {
+        //     const errorToAdd = {message: 'Only letters and digits are allowed.', name: name};
+        //     this.addError(errorToAdd)
+        // }
 
-        const lettersAndDigits = this.checkIfLettersAndDigits(e.target.value);
-        // console.log('lettersAndDigits', lettersAndDigits, name);
+
 
 
 
@@ -66,9 +79,9 @@ class ContactForm extends React.Component {
         })
     }
 
-    findInArray = (phrase) => {
-        return this.state.fieldIsEmpty.find((phraseInArray)=>{
-            return phraseInArray === phrase;
+    findInArray = (message, name) => {
+        return this.state.errors.find((error)=>{
+            return error.message === message && error.name === name;
         })
     }
 
@@ -76,7 +89,7 @@ class ContactForm extends React.Component {
         return (phrase.trim()) === '' ? true : false;
     }
 
-    checkIfLengthMatches = (phrase, length) =>  phrase < length;
+    checkIfLengthMatches = (phrase, length) =>  phrase.length < length;
     
     checkIfLettersAndDigits = (phrase) => {
         const regEx = /^[a-zA-Z0-9 ]+$/;
