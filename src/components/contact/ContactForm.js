@@ -9,7 +9,7 @@ class ContactForm extends React.Component {
             isEmpty: 'This field can not be empty.',
             tooShort: 'This field must contain three or mor caracters.',
             lettersAndNumbers: 'Only digit and numbers are allowed',
-            containCharacters: 'Inproper email adress.'
+            containCharacters: 'Invalid email adress.'
         },
         minimumLength: 3
     }
@@ -57,7 +57,6 @@ class ContactForm extends React.Component {
     }
 
     addError(errorToAdd) {
-        console.log(errorToAdd)
         this.setState((prevState) => {
             return {
                 errors: [...prevState.errors, { message: errorToAdd.message, name: errorToAdd.name }]
@@ -106,19 +105,36 @@ class ContactForm extends React.Component {
         }
     }
 
+    showNameAndSubjectErrors = (name) => {
+            const result = this.state.errors.filter((error)=>{
+               return error.name === name;
+            });
+            return result;
+    }
+
+    showErrors = (name) => {
+        return this.showNameAndSubjectErrors(name).map((message, key) => {
+            return <li key={key} className="error-message">{message.message}</li>;
+        });
+    }
+
     render() {
+        const nameErrorsList = this.showErrors('name');
+        const emailErrorsList = this.showErrors('email');
+        const subjectErrorsList = this.showErrors('subject');
+
         return (
             <div className="contact-form">
                 <form id="contact" action="" method="post">
-                    <input type="text" name="name" placeholder="Name" id="name" onBlur={this.handleValidateNameAndSubject}></input>
-                    {/* {this.state.errors.fieldIsNotEmpty['name'] && <span>Name field must not be empty.</span>} */}
-                    <input type="email" name="email" placeholder="Email" id="email" onBlur={this.handleValidateEmail}></input>
-                    {/* {this.state.errors.fieldIsNotEmpty.find((element)=> element === 'email') && <span>Email field must not be empty.</span>} */}
-                    <input type="text" name="subject" placeholder="Subject" id="subject" onBlur={this.handleValidateNameAndSubject}></input>
+                    <input type="text" name="name" placeholder="Name" id="name" onKeyUp={this.handleValidateNameAndSubject}></input>
+                    {nameErrorsList}
+                    <input type="email" name="email" placeholder="Email" id="email" onKeyUp={this.handleValidateEmail}></input>
+                    {emailErrorsList}
+                    <input type="text" name="subject" placeholder="Subject" id="subject" onKeyUp={this.handleValidateNameAndSubject}></input>
+                    {subjectErrorsList}
                     <span></span>
                     <textarea placeholder="Message" name='message' id="message"></textarea>
                     <button id="submitButton" name="submit" className="button button--green button__contact-form" >Send</button>
-
                 </form>
             </div>
         )
