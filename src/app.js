@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 
 
 import Header from './components/header/Header';
-import Jumbotron from './components/jumbotron/Jumbotron';
+import Home from './components/jumbotron/Jumbotron';
 
 import aboutMeContent from './components/AboutMe/about_me-content';
 import AboutMeList from './components/AboutMe/AboutMeList';
@@ -17,8 +17,6 @@ import 'normalize.css/normalize.css';
 import './styles/styles.scss';
 
 
-
-
 class App extends Component {
     render() {
 
@@ -30,10 +28,18 @@ class App extends Component {
         return (
             <div>
                 <Header />
-                <Jumbotron />
-                <AboutMeList data={newData}/>
-                <PortfolioList portfolioContent={portfolioContent}/>
-                <ContactMe />
+                <Home 
+                    // title="home"
+                />
+                <AboutMeList 
+                    title="aboutme"
+                    data={newData}
+                />
+                <PortfolioList 
+                    portfolioContent={portfolioContent}/>
+                <ContactMe 
+                    // title="contact"
+                />
             </div>
         );
     }

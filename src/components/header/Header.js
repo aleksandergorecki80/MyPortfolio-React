@@ -5,6 +5,8 @@ import SideDrawer from './SideDrawer/SideDrawer';
 import DrawerToggleButton from './SideDrawer/DrawerToggleButton';
 import Backdrop from './backdrop/Backdrop';
 
+import { Link, animateScroll as scroll } from "react-scroll";
+
 import AGLogo from '../../images/logo-ag-imp.svg';
 
 class Header extends React.Component {
@@ -75,12 +77,44 @@ class Header extends React.Component {
                     <div><img src={AGLogo} alt="Logo" className={ logoClasses }/></div>
                     <div className="spacer" />
                     <div className={ headerNavigationItemsClasses }>
-                        <BrowserRouter>
-                            <NavLink to="/" activeClassName="is-avtive" className="header__nav-link" exact={true}>Home</NavLink>
-                            <NavLink to="/about-me" activeClassName="is-avtive" className="header__nav-link">About me</NavLink>
-                            <NavLink to="/portfolio" activeClassName="is-avtive" className="header__nav-link">Portfolio</NavLink>
-                            <NavLink to="/contact" activeClassName="is-avtive" className="header__nav-link">Contact</NavLink>
-                        </BrowserRouter>
+
+                            <Link 
+                                to="jumbotron"
+                                activeClass="is-avtive"
+                                spy={true}
+                                smooth={true}
+                                offset={-70}
+                                duration={500}
+                                className="header__nav-link" 
+                            >Home</Link>
+                            <Link 
+                                to="about-me" 
+                                activeClass="is-avtive"
+                                spy={true}
+                                smooth={true}
+                                offset={-70}
+                                duration={500}
+                                className="header__nav-link"
+                            >About me</Link>
+                            <Link 
+                                to="portfolio" 
+                                activeClass="is-avtive"
+                                spy={true}
+                                smooth={true}
+                                offset={-70}
+                                duration={500}
+                                className="header__nav-link"
+                            >Portfolio</Link>
+                            <Link 
+                                to="contact" 
+                                activeClass="is-avtive"
+                                spy={true}
+                                smooth={true}
+                                offset={-70}
+                                duration={500}
+                                className="header__nav-link"
+                            >Contact</Link>
+
                     </div>
                     <div><DrawerToggleButton drawerClickHandler={this.toggleDrawerHandler} /></div>
                     <SideDrawer show={this.state.drawerOpen}/>

@@ -11,7 +11,42 @@ class ContactForm extends React.Component {
             lettersAndNumbers: 'Only digit and numbers are allowed',
             containCharacters: 'Invalid email adress.'
         },
-        minimumLength: 3
+        minimumLength: 3,
+        name: '',
+        email: '',
+        subject: '',
+        message: '',
+        mailSent: false,
+        error: null
+    }
+
+    handleFormSubmit = (e) => {
+        e.preventDefault();
+        console.log(this.state);
+    }
+
+    handleSetName = (e) => {
+        this.setState({
+            name: e.target.value
+        })
+    }
+
+    handleSetEmail = (e) => {
+        this.setState({
+            email: e.target.value
+        })
+    }
+
+    handleSetSubject = (e) => {
+        this.setState({
+            subject: e.target.value
+        })
+    }
+
+    handleSetMessage = (e) => {
+        this.setState({
+            message: e.target.value
+        })
     }
 
     handleValidateNameAndSubject = (e) => {
@@ -106,10 +141,10 @@ class ContactForm extends React.Component {
     }
 
     showNameAndSubjectErrors = (name) => {
-            const result = this.state.errors.filter((error)=>{
-               return error.name === name;
-            });
-            return result;
+        const result = this.state.errors.filter((error) => {
+            return error.name === name;
+        });
+        return result;
     }
 
     showErrors = (name) => {
@@ -126,15 +161,45 @@ class ContactForm extends React.Component {
         return (
             <div className="contact-form">
                 <form id="contact" action="" method="post">
-                    <input type="text" name="name" placeholder="Name" id="name" onKeyUp={this.handleValidateNameAndSubject}></input>
+                    <input
+                        type="text"
+                        name="name"
+                        placeholder="Name"
+                        id="name"
+                        onKeyUp={this.handleValidateNameAndSubject}
+                        onChange={this.handleSetName}
+                    ></input>
                     {nameErrorsList}
-                    <input type="email" name="email" placeholder="Email" id="email" onKeyUp={this.handleValidateEmail}></input>
+                    <input
+                        type="email"
+                        name="email"
+                        placeholder="Email"
+                        id="email"
+                        onKeyUp={this.handleValidateEmail}
+                        onChange={this.handleSetEmail}
+                    ></input>
                     {emailErrorsList}
-                    <input type="text" name="subject" placeholder="Subject" id="subject" onKeyUp={this.handleValidateNameAndSubject}></input>
+                    <input 
+                        type="text" 
+                        name="subject" 
+                        placeholder="Subject" 
+                        id="subject" 
+                        onKeyUp={this.handleValidateNameAndSubject}
+                        onChange={this.handleSetSubject}
+                    ></input>
                     {subjectErrorsList}
-                    <span></span>
-                    <textarea placeholder="Message" name='message' id="message"></textarea>
-                    <button id="submitButton" name="submit" className="button button--green button__contact-form" >Send</button>
+                    <textarea 
+                        placeholder="Message" 
+                        name='message' 
+                        id="message"
+                        onChange={this.handleSetMessage}
+                    ></textarea>
+                    <button
+                        id="submitButton"
+                        name="submit"
+                        className="button button--green button__contact-form"
+                        onClick={this.handleFormSubmit}
+                    >Send</button>
                 </form>
             </div>
         )
