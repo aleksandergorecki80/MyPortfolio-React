@@ -1,8 +1,10 @@
 import React from 'react';
 const _ = require('lodash');
+import axios from 'axios';
+
+const API_PATH = 'http://localhost/portfolio-react/api/contact/index.php';
 
 class ContactForm extends React.Component {
-
     state = {
         errors: [],
         messages: {
@@ -22,7 +24,24 @@ class ContactForm extends React.Component {
 
     handleFormSubmit = (e) => {
         e.preventDefault();
-        console.log(this.state);
+        const data = {
+            name: this.state.name,
+            email: this.state.email,
+            subject: this.state.subject,
+            message: this.state.message
+        }
+        axios({
+            method: 'post',
+            url: `${API_PATH}`,
+            headers: { 'content-type': 'application/json' },
+            data: data
+          })
+            .then(result => {
+              this.setState({
+                mailSent: result.data.sent
+              })
+            })
+            .catch(error => this.setState({ error: error.message }));
     }
 
     handleSetName = (e) => {
@@ -200,6 +219,11 @@ class ContactForm extends React.Component {
                         className="button button--green button__contact-form"
                         onClick={this.handleFormSubmit}
                     >Send</button>
+                    <div>
+  {this.state.mailSent &&
+    <div>Thank you for contcting us.</div>
+  }
+</div>
                 </form>
             </div>
         )
