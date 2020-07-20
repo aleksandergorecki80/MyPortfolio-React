@@ -20,6 +20,4 @@ class AboutMeList extends Component {
     }
 }
 
-
-
 export default AboutMeList;

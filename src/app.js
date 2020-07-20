@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 
-
 import Header from './components/header/Header';
 import Home from './components/jumbotron/Jumbotron';
 
@@ -19,32 +18,22 @@ import './styles/styles.scss';
 
 class App extends Component {
     render() {
-
-  
-
         const newData = aboutMeContent;
         const portfolioContent = PortfolioContent;
        
         return (
             <div>
                 <Header />
-                <Home 
-                    // title="home"
-                />
+                <Home />
                 <AboutMeList 
-                    title="aboutme"
                     data={newData}
                 />
                 <PortfolioList 
                     portfolioContent={portfolioContent}/>
-                <ContactMe 
-                    // title="contact"
-                />
+                <ContactMe />
             </div>
         );
     }
 }
-
-
 
 ReactDOM.render(<App />, document.getElementById('app'));

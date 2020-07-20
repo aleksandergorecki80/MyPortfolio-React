@@ -1,12 +1,9 @@
 import React from 'react';
 import { NavLink, BrowserRouter } from 'react-router-dom';
-
 import SideDrawer from './SideDrawer/SideDrawer';
 import DrawerToggleButton from './SideDrawer/DrawerToggleButton';
 import Backdrop from './backdrop/Backdrop';
-
 import { Link, animateScroll as scroll } from "react-scroll";
-
 import AGLogo from '../../images/logo-ag-imp.svg';
 
 class Header extends React.Component {
@@ -55,8 +52,6 @@ class Header extends React.Component {
             });
         }
     }
-
-
 
     render() {
         let backdrop;
@@ -124,6 +119,5 @@ class Header extends React.Component {
         );
     };
 }
-
 
 export default Header;

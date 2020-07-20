@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PortfolioPage from './PortfolioPage';
 
-
 const PortfolioList = (props) => {
     const projectsList = props.portfolioContent.map((project, key)=>{
         return(
