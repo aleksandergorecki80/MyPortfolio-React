@@ -3,6 +3,8 @@ import PortfolioPage from './PortfolioPage';
 
 const PortfolioList = (props) => {
     const projectsList = props.portfolioContent.map((project, key)=>{
+        console.log(props.portfolioContent.length)
+        console.log(key)
         return(
             <PortfolioPage 
             key={key}

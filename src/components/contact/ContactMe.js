@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import PhotoOfMe from '../../images/photo-of-me.jpg';
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { faGithubSquare, faLinkedin, faSkype } from "@fortawesome/free-brands-svg-icons";
+
 import ContactForm from './ContactForm';
  
+
 class ContactMe extends Component {
     render(){
         return (
@@ -38,6 +41,7 @@ class ContactMe extends Component {
         );
     }
 }
+
 
 export default ContactMe;
 

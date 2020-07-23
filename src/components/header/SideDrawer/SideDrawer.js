@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from "react-scroll";
 
 const SideDrawer = props => {
     let drawerClasses = 'side-drawer';
@@ -6,10 +7,46 @@ const SideDrawer = props => {
     return (
         <nav className={ drawerClasses } >
             <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="/">About me</a></li>
-                <li><a href="/">Portfolio</a></li>
-                <li><a href="/">Contact</a></li>
+            <Link 
+                                to="jumbotron"
+                                activeClass="is-avtive"
+                                spy={true}
+                                smooth={true}
+                                offset={-70}
+                                duration={500}
+                                className="header__nav-link" 
+                                onClick={props.close}
+                            >Home</Link>
+                            <Link 
+                                to="about-me" 
+                                activeClass="is-avtive"
+                                spy={true}
+                                smooth={true}
+                                offset={-70}
+                                duration={500}
+                                className="header__nav-link"
+                                onClick={props.close}
+                            >About me</Link>
+                            <Link 
+                                to="portfolio" 
+                                activeClass="is-avtive"
+                                spy={true}
+                                smooth={true}
+                                offset={-70}
+                                duration={500}
+                                className="header__nav-link"
+                                onClick={props.close}
+                            >Portfolio</Link>
+                            <Link 
+                                to="contact" 
+                                activeClass="is-avtive"
+                                spy={true}
+                                smooth={true}
+                                // offset={-600}
+                                duration={500}
+                                className="header__nav-link"
+                                onClick={props.close}
+                            >Contact</Link>
             </ul>
         </nav>
     )

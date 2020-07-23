@@ -105,14 +105,14 @@ class Header extends React.Component {
                                 activeClass="is-avtive"
                                 spy={true}
                                 smooth={true}
-                                offset={-70}
+                                // offset={-600}
                                 duration={500}
                                 className="header__nav-link"
                             >Contact</Link>
 
                     </div>
                     <div><DrawerToggleButton drawerClickHandler={this.toggleDrawerHandler} /></div>
-                    <SideDrawer show={this.state.drawerOpen}/>
+                    <SideDrawer show={this.state.drawerOpen} close={this.backdropClickHandler}/>
                     { backdrop }
                 </nav>
             </header>
