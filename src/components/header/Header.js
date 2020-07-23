@@ -55,65 +55,74 @@ class Header extends React.Component {
 
     render() {
         let backdrop;
-        if(this.state.drawerOpen) {
+        if (this.state.drawerOpen) {
             backdrop = <Backdrop click={this.backdropClickHandler} />;
         }
 
         let headerNavigationItemsClasses = "header__navigation--items";
         let logoClasses = "logo";
         let headerNavigationClasses = "header__navigation";
-        this.state.headerNavigationSmall &&  (headerNavigationClasses = "header__navigation small " );
-        this.state.headerNavigationSmall &&  (headerNavigationItemsClasses = "header__navigation--items small " );
-        this.state.headerNavigationSmall &&  (logoClasses = "logo small" );
+        this.state.headerNavigationSmall && (headerNavigationClasses = "header__navigation small ");
+        this.state.headerNavigationSmall && (headerNavigationItemsClasses = "header__navigation--items small ");
+        this.state.headerNavigationSmall && (logoClasses = "logo small");
 
         return (
             <header>
-                <nav className={ headerNavigationClasses } >
-                    <div><img src={AGLogo} alt="Logo" className={ logoClasses }/></div>
-                    <div className="spacer" />
-                    <div className={ headerNavigationItemsClasses }>
+                <nav className={headerNavigationClasses} >
 
-                            <Link 
-                                to="jumbotron"
-                                activeClass="is-avtive"
-                                spy={true}
-                                smooth={true}
-                                offset={-70}
-                                duration={500}
-                                className="header__nav-link" 
-                            >Home</Link>
-                            <Link 
-                                to="about-me" 
-                                activeClass="is-avtive"
-                                spy={true}
-                                smooth={true}
-                                offset={-70}
-                                duration={500}
-                                className="header__nav-link"
-                            >About me</Link>
-                            <Link 
-                                to="portfolio" 
-                                activeClass="is-avtive"
-                                spy={true}
-                                smooth={true}
-                                offset={-70}
-                                duration={500}
-                                className="header__nav-link"
-                            >Portfolio</Link>
-                            <Link 
-                                to="contact" 
-                                activeClass="is-avtive"
-                                spy={true}
-                                smooth={true}
-                                // offset={-600}
-                                duration={500}
-                                className="header__nav-link"
-                            >Contact</Link>
+                    <Link
+                        to="jumbotron"
+                        spy={true}
+                        smooth={true}
+                        offset={-70}
+                        duration={500} >
+                        <div><img src={AGLogo} alt="Logo" className={logoClasses} /></div>
+                    </Link>
+
+                    <div className="spacer" />
+                    <div className={headerNavigationItemsClasses}>
+
+                        <Link
+                            to="jumbotron"
+                            activeClass="is-avtive"
+                            spy={true}
+                            smooth={true}
+                            offset={-70}
+                            duration={500}
+                            className="header__nav-link"
+                        >Home</Link>
+                        <Link
+                            to="about-me"
+                            activeClass="is-avtive"
+                            spy={true}
+                            smooth={true}
+                            offset={-70}
+                            duration={500}
+                            className="header__nav-link"
+                        >About me</Link>
+                        <Link
+                            to="portfolio"
+                            activeClass="is-avtive"
+                            spy={true}
+                            smooth={true}
+                            offset={-70}
+                            duration={500}
+                            className="header__nav-link"
+                        >Portfolio</Link>
+                        <Link
+                            to="contact"
+                            activeClass="is-avtive"
+                            spy={true}
+                            smooth={true}
+                            // offset={-600}
+                            duration={500}
+                            className="header__nav-link"
+                        >Contact</Link>
 
                     </div>
                     <div><DrawerToggleButton drawerClickHandler={this.toggleDrawerHandler} /></div>
-                    <SideDrawer show={this.state.drawerOpen} close={this.backdropClickHandler}/>
-                    { backdrop }
+                    <SideDrawer show={this.state.drawerOpen} close={this.backdropClickHandler} />
+                    {backdrop}
                 </nav>
             </header>
         );

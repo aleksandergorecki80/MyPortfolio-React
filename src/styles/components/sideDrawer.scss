@@ -13,7 +13,7 @@
         list-style: none;
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        // justify-content: center;
         li {
             margin: 0.5rem;
             padding: 2rem;
@@ -35,6 +35,18 @@
     }
     transform: translateX(-100%);
     transition: transform 0.3s ease-out;
+}
+
+.close-icon-wrap {
+    display: flex;
+    justify-content: flex-end;
+    padding: 2em;
+    height: 20%;
+    align-items: center;
+}
+
+.side-drawer-close-icon {
+    font-size: 2em;
 }
 
 .side-drawer.open {

@@ -1,11 +1,17 @@
 import React from 'react';
 import { Link } from "react-scroll";
 
+import { faTimesCircle } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 const SideDrawer = props => {
     let drawerClasses = 'side-drawer';
     props.show && (drawerClasses = 'side-drawer open');
     return (
         <nav className={ drawerClasses } >
+            <div className="close-icon-wrap">
+                <FontAwesomeIcon icon={faTimesCircle} className="side-drawer-close-icon" onClick={props.close} />
+            </div>
             <ul>
             <Link 
                                 to="jumbotron"
@@ -54,3 +60,4 @@ const SideDrawer = props => {
 };
 
 export default SideDrawer;
+

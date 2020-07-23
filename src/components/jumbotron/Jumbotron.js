@@ -1,6 +1,8 @@
 import React from 'react';
 import HeroBg from '../../images/hero_bg.jpg';
 
+import { Link, animateScroll as scroll } from "react-scroll";
+
 import { faAngleDoubleDown } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -15,7 +17,15 @@ const Jumbotron = () => (
             }}
         >
             <div className="jumbotron__go-down-button">
+            <Link 
+                                to="about-me" 
+                                activeClass="is-avtive"
+                                spy={true}
+                                smooth={true}
+                                offset={-70}
+                                duration={500} >
                 <FontAwesomeIcon icon={faAngleDoubleDown} className="jumbotron__go-down-button__icon"/>
+                </Link>
             </div>
         </div>
     </section>
