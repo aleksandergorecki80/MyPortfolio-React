@@ -17,10 +17,10 @@ import './styles/styles.scss';
 
 
 class App extends Component {
+    
     render() {
         const newData = aboutMeContent;
-        const portfolioContent = PortfolioContent;
-       
+      
         return (
             <div>
                 <Header />
@@ -29,7 +29,7 @@ class App extends Component {
                     data={newData}
                 />
                 <PortfolioList 
-                    portfolioContent={portfolioContent}/>
+                    portfolioContent={PortfolioContent.data}/>
                 <ContactMe />
             </div>
         );

@@ -1,5 +1,4 @@
 import React from 'react';
-import { NavLink, BrowserRouter } from 'react-router-dom';
 import SideDrawer from './SideDrawer/SideDrawer';
 import DrawerToggleButton from './SideDrawer/DrawerToggleButton';
 import Backdrop from './backdrop/Backdrop';
