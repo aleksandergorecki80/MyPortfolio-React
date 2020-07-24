@@ -2,7 +2,13 @@ import React from 'react';
 const _ = require('lodash');
 import axios from 'axios';
 
-const API_PATH = 'http://localhost/portfolio-react/api/contact/index.php';
+const url = window.location.href;
+let API_PATH;
+if (url.includes('localhost')) {
+    API_PATH = 'http://localhost/portfolio-react/api/contact/index.php';
+} else if (url.includes('aleksandergorecki.com')) {
+    API_PATH = 'http://aleksandergorecki.com/api/contact/index.php';
+}
 
 class ContactForm extends React.Component {
     state = {
@@ -35,13 +41,19 @@ class ContactForm extends React.Component {
             url: `${API_PATH}`,
             headers: { 'content-type': 'application/json' },
             data: data
-          })
+        })
             .then(result => {
-              this.setState({
-                mailSent: result.data.sent
-              })
+                this.setState({
+                    mailSent: result.data.sent,
+                    name: '',
+                    email: '',
+                    subject: '',
+                    message: ''
+                })
             })
-            .catch(error => this.setState({ error: error.message }));
+            .catch(error => this.setState({
+                error: error.message,
+            }));
     }
 
     handleSetName = (e) => {
@@ -179,6 +191,11 @@ class ContactForm extends React.Component {
 
         return (
             <div className="contact-form">
+                <div>
+                    {this.state.mailSent &&
+                        <div className="message-success">Thank you for contcting me.</div>
+                    }
+                </div>
                 <form id="contact" action="" method="post">
                     <input
                         type="text"
@@ -198,18 +215,18 @@ class ContactForm extends React.Component {
                         onChange={this.handleSetEmail}
                     ></input>
                     {emailErrorsList}
-                    <input 
-                        type="text" 
-                        name="subject" 
-                        placeholder="Subject" 
-                        id="subject" 
+                    <input
+                        type="text"
+                        name="subject"
+                        placeholder="Subject"
+                        id="subject"
                         onKeyUp={this.handleValidateNameAndSubject}
                         onChange={this.handleSetSubject}
                     ></input>
                     {subjectErrorsList}
-                    <textarea 
-                        placeholder="Message" 
-                        name='message' 
+                    <textarea
+                        placeholder="Message"
+                        name='message'
                         id="message"
                         onChange={this.handleSetMessage}
                     ></textarea>
@@ -219,11 +236,6 @@ class ContactForm extends React.Component {
                         className="button button--green button__contact-form"
                         onClick={this.handleFormSubmit}
                     >Send</button>
-                    <div>
-  {this.state.mailSent &&
-    <div>Thank you for contcting us.</div>
-  }
-</div>
                 </form>
             </div>
         )
