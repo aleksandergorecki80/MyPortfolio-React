@@ -201,6 +201,7 @@ class ContactForm extends React.Component {
                         type="text"
                         name="name"
                         placeholder="Name"
+                        value={this.state.name}
                         id="name"
                         onKeyUp={this.handleValidateNameAndSubject}
                         onChange={this.handleSetName}
@@ -210,6 +211,7 @@ class ContactForm extends React.Component {
                         type="email"
                         name="email"
                         placeholder="Email"
+                        value={this.state.email}
                         id="email"
                         onKeyUp={this.handleValidateEmail}
                         onChange={this.handleSetEmail}
@@ -219,6 +221,7 @@ class ContactForm extends React.Component {
                         type="text"
                         name="subject"
                         placeholder="Subject"
+                        value={this.state.subject}
                         id="subject"
                         onKeyUp={this.handleValidateNameAndSubject}
                         onChange={this.handleSetSubject}
@@ -227,6 +230,7 @@ class ContactForm extends React.Component {
                     <textarea
                         placeholder="Message"
                         name='message'
+                        value={this.state.message}
                         id="message"
                         onChange={this.handleSetMessage}
                     ></textarea>
