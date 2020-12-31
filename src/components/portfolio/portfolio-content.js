@@ -1,6 +1,16 @@
 const PortfolioContent = {
     data: [
         {
+            "title": "Noughts And Crosses",
+            "subtitle": "A classic strategic paper-and-pencil game for two players",
+            "img": "noughts-and-crosses.jpg",
+            "technologies": [ "React JS", "Redux", "React hooks", "SCSS" ],
+            "wwwButtonName": "",
+            "wwwButtonUrl": "https://aleksandergorecki80.github.io/NoughtsAndCrosses/#/",
+            "githubButtonName": "",
+            "githubButtonUrl": "https://github.com/aleksandergorecki80/NoughtsAndCrosses"
+        },
+        {
             "title": "Blog Justyny",
             "subtitle": "Web page with recipes",
             "img": "blog-justyny.jpg",
