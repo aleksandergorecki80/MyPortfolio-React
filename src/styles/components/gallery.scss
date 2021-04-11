@@ -1,0 +1,57 @@
+.show-gallery {
+    cursor: pointer;
+}
+.gallery-modal {
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    overflow: auto;
+    background: rgba(0, 0, 0, 0.9);
+    flex-direction: column;
+    .gallery-header {
+        width: 60%;
+        text-align: end;
+    }
+    .gallery {
+        display: flex;
+        flex-direction: column;
+        max-width: 60%;
+        padding: 30px;
+        background-color: black;
+    }
+    button,
+    span {
+        cursor: pointer;
+        text-align: center;
+    }
+    span {
+        font-size: xxx-large;
+        color: white;
+        &:hover {
+            color: $dark-grey;
+        }
+    }
+    button {
+        // background: rgba(0,0,0,.9);
+        background: transparent;
+        color: $light-grey;
+        border: none;
+        &:hover {
+            color: $dark-grey;
+        }
+    }
+    .pagination-buttons {
+        margin-top: 15px;
+        display: flex;
+        /* align-items: center; */
+        justify-content: center;
+    }
+}

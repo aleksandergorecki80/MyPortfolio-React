@@ -15,7 +15,6 @@ import ContactMe from './components/contact/ContactMe';
 import 'normalize.css/normalize.css';
 import './styles/styles.scss';
 
-
 class App extends Component {
     
     render() {
@@ -29,7 +28,7 @@ class App extends Component {
                     data={newData}
                 />
                 <PortfolioList 
-                    portfolioContent={PortfolioContent.data}/>
+                    portfolioContent={PortfolioContent.data} />
                 <ContactMe />
             </div>
         );

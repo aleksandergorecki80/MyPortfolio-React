@@ -6,14 +6,16 @@ const PortfolioList = (props) => {
         return(
             <PortfolioPage 
             key={key}
-            title={project.title}
-            subtitle={project.subtitle}
-            img={project.img}
-            technologies={project.technologies}
-            wwwButtonName={project.wwwButtonName}
-            wwwButtonUrl={project.wwwButtonUrl}
-            githubButtonName={project.githubButtonName}
-            githubButtonUrl={project.githubButtonUrl}
+            // title={project.title}
+            // description={project.description}
+            // subtitle={project.subtitle}
+            // img={project.img}
+            // technologies={project.technologies}
+            // wwwButtonName={project.wwwButtonName}
+            // wwwButtonUrl={project.wwwButtonUrl}
+            // githubButtonName={project.githubButtonName}
+            // githubButtonUrl={project.githubButtonUrl}
+            project={project}
         />
         )
 
