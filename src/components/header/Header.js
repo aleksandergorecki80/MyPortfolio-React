@@ -68,7 +68,6 @@ class Header extends React.Component {
         return (
             <header>
                 <nav className={headerNavigationClasses} >
-
                     <Link
                         to="jumbotron"
                         spy={true}
