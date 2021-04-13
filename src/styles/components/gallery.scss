@@ -16,42 +16,56 @@
     overflow: auto;
     background: rgba(0, 0, 0, 0.9);
     flex-direction: column;
-    .gallery-header {
-        width: 60%;
-        text-align: end;
-    }
-    .gallery {
-        display: flex;
-        flex-direction: column;
-        max-width: 60%;
-        padding: 30px;
+    .gallery-content {
         background-color: black;
-    }
-    button,
-    span {
-        cursor: pointer;
-        text-align: center;
-    }
-    span {
-        font-size: xxx-large;
-        color: white;
-        &:hover {
-            color: $dark-grey;
-        }
-    }
-    button {
-        // background: rgba(0,0,0,.9);
-        background: transparent;
-        color: $light-grey;
-        border: none;
-        &:hover {
-            color: $dark-grey;
-        }
-    }
-    .pagination-buttons {
-        margin-top: 15px;
+        flex-direction: column;
+        justify-content: space-between;
         display: flex;
-        /* align-items: center; */
-        justify-content: center;
+        transition: all 2s;
+        .gallery-header {
+            text-align: end;
+            padding-right: 10px;
+        }
+        span {
+            cursor: pointer;
+            font-size: xxx-large;
+            color: white;
+            &:hover {
+                color: $dark-grey;
+            }
+        }
+        .slides {
+            display: flex;
+            justify-content: center;
+            img {
+                width: auto;
+                max-width: 80%;
+                max-height: 100%;
+            }
+        }
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin: 20px 20px;
+            span {
+                font-size: small;
+                margin: 0 5px;
+                border: 1px solid $dark-grey;
+                padding: 5px;
+                color: $dark-grey;
+                &:hover {
+                    background-color: $off-black;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 767px){ 	
+	.pagination {
+		span {
+            font-size: xx-small !important;
+            padding: 2px;
+        }
     }
 }

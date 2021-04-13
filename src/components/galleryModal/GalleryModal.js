@@ -3,32 +3,49 @@ import React from 'react';
 class GalleryModal extends React.Component {
   state = {
     imgPrefix: this.props.img,
-    currentImg: 0,
-  };
-  handleOnClickAdd = () => {
-    if (this.state.currentImg < this.props.imgCounter) {
-      return this.setState((prevState) => {
-        return {
-          currentImg: prevState.currentImg + 1,
-        };
-      });
-    }
+    currentImg: 1,
+    pagination: []
   };
 
-  handleOnClickSubtract = () => {
-    if (this.state.currentImg > 0) {
-      return this.setState((prevState) => {
+
+  onclickHandle = (event) =>{
+    this.setState({
+      currentImg: event.target.innerText
+    })
+  }
+
+  componentDidMount(){
+    for(let i = this.state.currentImg; i <= this.props.imgCounter; i++){
+      console.log(i)
+      this.setState((prevState) => {
         return {
-          currentImg: prevState.currentImg - 1,
-        };
-      });
+          pagination: [...prevState.pagination, i]
+        }
+      })
     }
-  };
+  }
 
   render() {
+    const pageNumber = this.state.pagination.map((number, key) => {
+      return <span onClick={this.onclickHandle} key={key}>{number}</span>}
+      )
     return (
       <div className="gallery-modal">
+        <div className="gallery-content">
         <div className="gallery-header">
+          <span onClick={() => this.props.setGallery(false)}>&times;</span>
+        </div>
+        <div className="slides">
+        <img
+            src={`/images/${this.state.imgPrefix}_${this.state.currentImg}.jpg`}
+          />
+        </div>
+        <div className="pagination">
+          {pageNumber}
+        </div>
+        </div>
+
+        {/* <div className="gallery-header">
           <span onClick={() => this.props.setGallery(false)}>&times;</span>
         </div>
         <div className="gallery">
@@ -43,7 +60,7 @@ class GalleryModal extends React.Component {
               Next
             </button>
           </div>
-        </div>
+        </div> */}
       </div>
     );
   }
