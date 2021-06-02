@@ -24,7 +24,7 @@ class ContactForm extends React.Component {
         email: '',
         subject: '',
         message: '',
-        mailSent: false,
+        mailSent: '',
         error: null
     }
 
@@ -38,13 +38,13 @@ class ContactForm extends React.Component {
         }
         axios({
             method: 'post',
-            url: `${API_PATH}`,
+            url: '/api/send',
             headers: { 'content-type': 'application/json' },
             data: data
         })
             .then(result => {
                 this.setState({
-                    mailSent: result.data.sent,
+                    mailSent: result.data.message,
                     name: '',
                     email: '',
                     subject: '',
@@ -189,11 +189,18 @@ class ContactForm extends React.Component {
         const emailErrorsList = this.showErrors('email');
         const subjectErrorsList = this.showErrors('subject');
 
+        if(this.state.mailSent){
+            setTimeout(() =>{ 
+                this.setState({
+                    mailSent: ''
+                })
+            }, 3000)
+        }
         return (
             <div className="contact-form">
                 <div>
                     {this.state.mailSent &&
-                        <div className="message-success">Thank you for contcting me.</div>
+                        <div className="message-success">{this.state.mailSent}. Thank you for contcting me.</div>
                     }
                 </div>
                 <form id="contact" action="" method="post">
